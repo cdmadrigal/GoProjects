@@ -1,0 +1,78 @@
+{
+  "name": "SampleLambdaApp",
+  "type": "flogo:app",
+  "version": "0.0.1",
+  "description": "",
+  "triggers": [
+    {
+      "name": "Start Flow as a function in Lambda",
+      "ref": "github.com/TIBCOSoftware/flogo-contrib/trigger/lambda",
+      "description": "Simple Lambda Trigger",
+      "settings": {},
+      "id": "start_flow_as_a_function_in_lambda",
+      "handlers": [
+        {
+          "settings": {},
+          "actionId": "sample_lambda_flow",
+          "actionMappings": {
+            "input": [],
+            "output": []
+          }
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "data": {
+        "flow": {
+          "name": "SampleLambdaFlow",
+          "type": 1,
+          "attributes": [],
+          "rootTask": {
+            "id": "root",
+            "type": 1,
+            "tasks": [
+              {
+                "id": "log_2",
+                "name": "Log Message",
+                "description": "Simple Log Activity",
+                "type": 1,
+                "activityType": "github-com-tibco-software-flogo-contrib-activity-log",
+                "activityRef": "github.com/TIBCOSoftware/flogo-contrib/activity/log",
+                "attributes": [
+                  {
+                    "name": "message",
+                    "value": "HelloWorld from AWS Lambda!",
+                    "required": false,
+                    "type": "string"
+                  },
+                  {
+                    "name": "flowInfo",
+                    "value": "true",
+                    "required": false,
+                    "type": "boolean"
+                  },
+                  {
+                    "name": "addToFlow",
+                    "value": "true",
+                    "required": false,
+                    "type": "boolean"
+                  }
+                ]
+              }
+            ],
+            "links": [],
+            "attributes": []
+          }
+        }
+      },
+      "id": "sample_lambda_flow",
+      "metadata": {
+        "input": [],
+        "output": []
+      },
+      "ref": "github.com/TIBCOSoftware/flogo-contrib/action/flow"
+    }
+  ]
+}
